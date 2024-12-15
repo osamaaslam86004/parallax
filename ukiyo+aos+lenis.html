@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ukiyo.js Parallax with AOS and Lenis</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+    <!-- Lenis.css -->
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css" />
+    <!-- aos.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .parallax-container {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .parallax-container img {
+        height: 100%;
+        width: auto;
+      }
+
+      .ukiyo {
+        max-width: 100%;
+        height: auto;
+        transform: none; /* Fallback for non-JS users */
+      }
+
+      .content {
+        text-align: center;
+        position: absolute;
+        z-index: 2;
+        color: white;
+        text-shadow: 0 0 5px black;
+      }
+
+      section {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f0f0f0;
+      }
+
+      section h2 {
+        font-size: 2rem;
+        color: #333;
+      }
+
+      .multi-parallax {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 20px;
+        background-color: #fafafa;
+      }
+
+      .multi-parallax img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Section 1 -->
+    <div class="parallax-container" data-aos="fade-in">
+      <img
+        src="assets/image-hero-desktop.webp"
+        class="ukiyo"
+        alt="Parallax Image"
+        loading="lazy"
+      />
+      <div class="content">
+        <h1>Welcome to Ukiyo.js</h1>
+      </div>
+    </div>
+
+    <!-- Section 2 -->
+    <section>
+      <h2 data-aos="slide-up">Regular Section with Content</h2>
+    </section>
+
+    <!-- Section 3 -->
+    <div class="parallax-container" data-aos="fade-in">
+      <img
+        src="assets/image-hero-desktop.webp"
+        class="ukiyo"
+        alt="Parallax Image 2"
+        loading="lazy"
+      />
+      <div class="content">
+        <h1>Parallax Section 2</h1>
+      </div>
+    </div>
+
+    <!-- Section 4: Multiple Images with Parallax -->
+    <div class="multi-parallax" id="multi-parallax" data-aos="zoom-in">
+      <!-- Images will be dynamically inserted here -->
+    </div>
+
+    <!-- Section 5 -->
+    <section>
+      <h2 data-aos="fade-left">Another Regular Section</h2>
+    </section>
+
+    <!-- Section 6 -->
+    <div class="parallax-container" data-aos="fade-in">
+      <img
+        src="assets/image-hero-desktop.webp"
+        class="ukiyo"
+        alt="Parallax Image 3"
+        loading="lazy"
+      />
+      <div class="content">
+        <h1>Parallax Section 3</h1>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/ukiyojs@4.1.2/dist/ukiyo.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.8/bundled/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+      // Initialize Lenis Smooth Scroll
+      const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+      });
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+
+      // Initialize Ukiyo.js for single images
+      const singleImages = document.getElementsByClassName("ukiyo");
+      if (singleImages.length > 0) {
+        new Ukiyo(singleImages, {
+          scale: 1.5, // Zoom effect
+          speed: 2, // Parallax speed
+          willChange: true, // Optimize performance
+        });
+      }
+
+      // Initialize AOS.js
+      AOS.init({
+        duration: 1000,
+        easing: "ease-in-out",
+        once: false,
+      });
+
+      // Fetch images from Unsplash API and create multiple parallax images
+      const multiParallaxContainer = document.getElementById("multi-parallax");
+      fetch(
+        "https://api.unsplash.com/photos/random?count=6&client_id=l-mJWomYh4493j4Zp8DgV9wxFlSknkjDYoGDzzthObE"
+      )
+        .then((response) => response.json())
+        .then((images) => {
+          images.forEach((image) => {
+            if (image.urls && image.urls.regular) {
+              const imgElement = document.createElement("img");
+              imgElement.src = image.urls.regular;
+              imgElement.alt = image.alt_description || "Unsplash Image";
+              imgElement.classList.add("ukiyo");
+              multiParallaxContainer.appendChild(imgElement);
+            } else {
+              console.warn("Image URL not found:", image);
+            }
+          });
+
+          // Initialize Ukiyo.js for dynamically added images
+          new Ukiyo(document.querySelectorAll(".multi-parallax .ukiyo"), {
+            scale: 1.2,
+            speed: 1.5,
+          });
+        })
+        .catch((error) => console.error("Error fetching images from Unsplash:", error));
+    </script>
+  </body>
+</html>

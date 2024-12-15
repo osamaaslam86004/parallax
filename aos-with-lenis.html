@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parallax and Lenis Smooth Scrolling</title>
+    <!-- custom styles -->
+    <link rel="stylesheet" href="css/enhanced-horizontal.css" />
+    <!-- Lenis.css -->
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css" />
+    <!-- aos.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  </head>
+  <body>
+    <!-- Section: Basic Lenis Usage -->
+    <section class="parallax-container">
+      <h1>Lenis Basic Usage</h1>
+      <p>Scroll smoothly using Lenis.</p>
+    </section>
+
+    <!-- Static Content -->
+    <section>
+      <h2>Static Content</h2>
+      <p>This is a simple static content section.</p>
+    </section>
+
+    <!-- Section: Custom RAF Loop -->
+    <section class="parallax-container custom-raf">
+      <h1>Lenis Custom RAF Loop</h1>
+      <p>Demonstrating Lenis with a custom RAF loop.</p>
+    </section>
+
+    <!-- Section: AOS Example -->
+    <section class="parallax-container aos-section" data-aos="fade-up">
+      <h1>Lenis with AOS.js</h1>
+      <p>Animating elements on scroll using AOS.js.</p>
+    </section>
+
+    <!-- Lenis.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.6/bundled/lenis.min.js"></script>
+    <!-- aos.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <script>
+      // Initialize Lenis for smooth scrolling
+      const lenis = new Lenis({
+        duration: 1.5, // Smooth scrolling duration
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      });
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+
+      // Custom RAF Loop Example
+      const rafSection = document.querySelector(".custom-raf");
+      lenis.on("scroll", (e) => {
+        const scrollY = lenis.scroll;
+        rafSection.style.backgroundPosition = `${scrollY * 0.5}px center`;
+      });
+
+      // Initialize AOS.js for scroll animations
+      AOS.init({
+        duration: 1200, // Animation duration
+        easing: "ease-in-out", // Animation easing
+        once: false, // Animate only once
+      });
+
+      // Update AOS.js on Lenis scroll
+      lenis.on("scroll", AOS.refresh);
+    </script>
+  </body>
+</html>

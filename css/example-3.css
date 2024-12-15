@@ -1,0 +1,45 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.parallax-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.parallax-container img {
+    height: 100%;
+    width: auto;
+}
+
+.ukiyo {
+    max-width: 100%;
+    height: auto;
+    transform: none; /* Fallback for non-JS users */
+}
+
+.content {
+    text-align: center;
+    position: absolute;
+    z-index: 2;
+    color: white;
+    text-shadow: 0 0 5px black;
+}
+
+section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+section h2 {
+    font-size: 2rem;
+    color: #333;
+}

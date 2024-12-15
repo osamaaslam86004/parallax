@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced Ukiyo.js Parallax Example</title>
+    <link rel="stylesheet" href="css/example-3.css" />
+  </head>
+  <body>
+    <!-- Section 1 -->
+    <div class="parallax-container">
+      <img
+        src="assets/image-hero-desktop.webp"
+        class="ukiyo layer1"
+        alt="Parallax Image 1"
+        loading="lazy"
+      />
+      <div class="content">
+        <h1>Welcome to Advanced Ukiyo.js</h1>
+      </div>
+    </div>
+
+    <!-- Section 2 -->
+    <section>
+      <h2>Regular Section with Content</h2>
+      <p>This section contains regular content.</p>
+    </section>
+
+    <!-- Section 3 -->
+    <div class="parallax-container">
+      <img
+        src="assets/image-hero-desktop.webp"
+        class="ukiyo layer2"
+        alt="Parallax Image 2"
+        loading="lazy"
+      />
+      <div class="content">
+        <h1>Parallax Section 2</h1>
+      </div>
+    </div>
+
+    <!-- Section 4 -->
+    <section>
+      <h2>Another Regular Section</h2>
+      <p>This is another section with more information.</p>
+    </section>
+
+    <!-- Section 5 -->
+    <div class="parallax-container">
+      <img
+        src="assets/image-hero-desktop.webp"
+        class="ukiyo layer3"
+        alt="Parallax Image 3"
+        loading="lazy"
+      />
+      <div class="content">
+        <h1>Parallax Section 3</h1>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/ukiyojs@4.1.2/dist/ukiyo.min.js"></script>
+    <script>
+      // Initialize Ukiyo.js for all layers
+      const layers = document.querySelectorAll(".ukiyo");
+
+      layers.forEach((layer, index) => {
+        new Ukiyo(layer, {
+          scale: 1.5 + index * 0.5, // Different zoom effect for each layer
+          speed: 2 - index * 0.5, // Different speed for each layer
+          willChange: true,
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CoolGadget Landing Page</title>
+    <link rel="stylesheet" href="css/sticky-header.css" />
+    <script src="https://cdn.jsdelivr.net/npm/lenis@latest/dist/lenis.min.js"></script>
+  </head>
+  <body>
+    <!-- Sticky Header -->
+    <header class="sticky-header">
+      <h1>CoolGadget</h1>
+    </header>
+
+    <!-- Content Sections -->
+    <section class="content-section" id="intro">
+      <h2>Welcome to CoolGadget</h2>
+      <p>Your ultimate gadget for everyday tasks.</p>
+    </section>
+
+    <section class="content-section" id="features">
+      <h2>Features</h2>
+      <p>Discover the amazing features of CoolGadget.</p>
+    </section>
+
+    <section class="content-section" id="reviews">
+      <h2>Customer Reviews</h2>
+      <p>See what our customers are saying!</p>
+    </section>
+
+    <section class="content-section" id="contact">
+      <h2>Contact Us</h2>
+      <p>Get in touch for more information.</p>
+    </section>
+
+    <!-- Scripts -->
+    <script>
+      // Initialize Lenis for smooth scrolling
+      const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => t,
+        smoothWheel: true,
+      });
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+
+      // Custom Actions
+      const sections = document.querySelectorAll(".content-section");
+
+      sections.forEach((section) => {
+        const handleEnter = () => {
+          console.log(`Entering ${section.id} section`);
+          section.style.backgroundColor = "#d0e7ff"; // Change background on hover
+        };
+
+        const handleLeave = () => {
+          console.log(`Exiting ${section.id} section`);
+          section.style.backgroundColor = ""; // Reset background
+        };
+
+        // Add mouse events for desktop
+        section.addEventListener("mouseenter", handleEnter);
+        section.addEventListener("mouseleave", handleLeave);
+
+        // Add touch events for mobile
+        // section.addEventListener("touchstart", handleEnter);
+        // section.addEventListener("touchend", handleLeave);
+      });
+
+      // Change header color on scroll
+      window.addEventListener("scroll", () => {
+        const header = document.querySelector(".sticky-header");
+        if (window.scrollY > 50) {
+          header.style.backgroundColor = "#333";
+          header.style.color = "#fff";
+        } else {
+          header.style.backgroundColor = "transparent";
+          header.style.color = "#000";
+        }
+      });
+    </script>
+  </body>
+</html>

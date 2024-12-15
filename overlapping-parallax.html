@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Overlapping Fixed Text Parallax</title>
+    <link rel="stylesheet" href="css/lenis.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css" />
+  </head>
+  <body>
+    <!-- Parallax Section -->
+    <div class="parallax-section">
+      <div class="parallax-image" data-aos="fade-up">
+        <img src="assets/preview16.jpg" alt="Osaka Sky" class="ukiyo" />
+      </div>
+      <div class="fixed-text">
+        <h2>Fixed Text</h2>
+        <p>Background Image Parallax</p>
+      </div>
+    </div>
+
+    <!-- Reviews Section -->
+    <div class="position-relative d-flex flex-row mt-5" id="card-container">
+      <div
+        class="card d-flex flex-column justify-content-between p-3"
+        data-aos="fade-up-left"
+        style="opacity: 0"
+      >
+        <div class="card-number">01</div>
+        <div class="card-text">RUN THE</div>
+      </div>
+      <div
+        class="card d-flex flex-column justify-content-between p-3"
+        data-aos="fade-up-left"
+        style="opacity: 0"
+      >
+        <div class="card-number">02</div>
+        <div class="card-text">LIGHTWEIGHT UNDER</div>
+      </div>
+      <div
+        class="card d-flex flex-column justify-content-between p-3"
+        data-aos="fade-up-left"
+        style="opacity: 0"
+      >
+        <div class="card-number">03</div>
+        <div class="card-text">MAD</div>
+      </div>
+      <div
+        class="card d-flex flex-column justify-content-between p-3"
+        data-aos="fade-up-left"
+        style="opacity: 0"
+      >
+        <div class="card-number">04</div>
+        <div class="card-text">BRING ANIM</div>
+      </div>
+      <div
+        class="card d-flex flex-column justify-content-between p-3"
+        data-aos="fade-up-left"
+        style="opacity: 0"
+      >
+        <div class="card-number">05</div>
+        <div class="card-text">CONTROL THE SCR</div>
+      </div>
+      <div
+        class="card d-flex flex-column justify-content-between p-3"
+        data-aos="fade-up-left"
+        style="opacity: 0"
+      >
+        <div class="card-number">06</div>
+        <div class="card-text">USE ANY ELEMENT AS SCROLLER</div>
+      </div>
+    </div>
+
+    <!-- Include Scripts -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.8/bundled/lenis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Initialize AOS
+      AOS.init({
+        duration: 600,
+      });
+
+      // Initialize Lenis for smooth scrolling
+      const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      });
+
+      const cards = document.querySelectorAll(".card");
+      let currentCardIndex = 0;
+      let lastScrollY = window.scrollY;
+
+      // Function to check scroll position
+      function checkScroll() {
+        const scrollY = window.scrollY;
+
+        // Check if user has scrolled down enough to reveal the next card
+        if (scrollY > lastScrollY + 90 && currentCardIndex < cards.length) {
+          // Adjust '90' for your needs
+          const card = cards[currentCardIndex];
+          card.style.opacity = 1; // Make it visible
+          card.setAttribute("data-aos", "fade-up-left"); // Trigger AOS animation
+          currentCardIndex++; // Move to the next card
+        }
+
+        lastScrollY = scrollY; // Update last scroll position
+      }
+
+      // Animation frame function for Lenis and scroll check
+      function raf(time) {
+        lenis.raf(time);
+        checkScroll(); // Check scroll position on each frame
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+    </script>
+  </body>
+</html>

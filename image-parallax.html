@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ukiyo.js Parallax Example</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .parallax-container {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .parallax-container img {
+        height: 100%;
+        width: auto;
+      }
+
+      .ukiyo {
+        max-width: 100%;
+        height: auto;
+        transform: none; /* Fallback for non-JS users */
+      }
+
+      .content {
+        text-align: center;
+        position: absolute;
+        z-index: 2;
+        color: white;
+        text-shadow: 0 0 5px black;
+      }
+
+      section {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f0f0f0;
+      }
+
+      section h2 {
+        font-size: 2rem;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Section 1 -->
+    <div class="parallax-container">
+      <img
+        src="assets/image-hero-desktop.webp"
+        class="ukiyo"
+        alt="Parallax Image"
+        loading="lazy"
+      />
+      <div class="content">
+        <h1>Welcome to Ukiyo.js</h1>
+      </div>
+    </div>
+
+    <!-- Section 2 -->
+    <section>
+      <h2>Regular Section with Content</h2>
+    </section>
+
+    <!-- Section 3 -->
+    <div class="parallax-container">
+      <img
+        src="assets/image-hero-desktop.webp"
+        class="ukiyo"
+        alt="Parallax Image 2"
+        loading="lazy"
+      />
+      <div class="content">
+        <h1>Parallax Section 2</h1>
+      </div>
+    </div>
+
+    <!-- Section 4 -->
+    <section>
+      <h2>Another Regular Section</h2>
+    </section>
+
+    <!-- Section 5 -->
+    <div class="parallax-container">
+      <img
+        src="assets/image-hero-desktop.webp"
+        class="ukiyo"
+        alt="Parallax Image 3"
+        loading="lazy"
+      />
+      <div class="content">
+        <h1>Parallax Section 3</h1>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/ukiyojs@4.1.2/dist/ukiyo.min.js"></script>
+    <script>
+      // Initialize Ukiyo.js
+      const images = document.getElementsByClassName("ukiyo");
+      if (images.length > 0) {
+        new Ukiyo(images, {
+          scale: 1.5, // Zoom effect
+          speed: 2, // Parallax speed
+          willChange: true, // Optimize performance
+        });
+      } else {
+        console.warn("No ukiyo elements found.");
+      }
+    </script>
+  </body>
+</html>

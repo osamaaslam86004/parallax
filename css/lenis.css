@@ -1,0 +1,61 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .parallax-section {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .parallax-image img {
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .ukiyo {
+    width: 100%;
+    height: auto;
+  }
+  
+  .fixed-text {
+    position: fixed;
+    top: 30%; /* Adjust as needed */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    z-index: 10; /* Ensures text is above the image */
+  }
+  
+  .fixed-text h2 {
+    font-size: 3rem;
+  }
+  
+  .fixed-text p {
+    font-size: 1.5rem;
+  }
+  
+
+
+  .card {
+      width: 12rem;
+      height: 16rem;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .card-number {
+      font-size: 4rem;
+      font-weight: bold;
+      color: #ff6b6b;
+  }
+  .card-text {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: black;
+  }
