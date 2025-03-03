@@ -1,97 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lenis Start and Stop Examples</title>
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="css/enhanced-horizontal.css" />
-    <!-- Lenis.css -->
-    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css" />
-    <!-- AOS.css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
-  </head>
-  <body>
-    <!-- Section 1: Start and Stop with Button -->
-    <section class="control-section">
-      <h1>Lenis Start and Stop with Button</h1>
-      <button id="toggle-scroll">Stop Scrolling</button>
-    </section>
 
-    <!-- Section 2: Pause Scrolling on Hover -->
-    <section class="hover-pause" data-aos="fade-up">
-      <h1>Pause Scrolling on Hover</h1>
-      <p>Hover over this section to pause scrolling.</p>
-    </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lenis Start and Stop Examples</title>
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/enhanced-horizontal.css" />
+  <!-- Lenis.css -->
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css" />
+  <!-- AOS.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+</head>
 
-    <!-- Section 3: Stop Scrolling on Image Click -->
-    <section class="uk-parallax">
-      <img
-        src="https://via.placeholder.com/1920x1080"
-        class="ukiyo"
-        alt="Ukiyo Parallax Image"
-      />
-      <h1>Stop Scrolling on Image Click</h1>
-      <p>Click the parallax image to stop scrolling.</p>
-    </section>
+<body>
+  <!-- Section 1: Start and Stop with Button -->
+  <section class="control-section">
+    <h1>Lenis Start and Stop with Button</h1>
+    <button id="toggle-scroll">Stop Scrolling</button>
+  </section>
 
-    <!-- Lenis.js -->
-    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.6/bundled/lenis.min.js"></script>
-    <!-- AOS.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <!-- Ukiyo.js -->
-    <script src="https://cdn.jsdelivr.net/npm/ukiyojs@4.1.2/dist/ukiyo.min.js"></script>
+  <!-- Section 2: Pause Scrolling on Hover -->
+  <section class="hover-pause" data-aos="fade-up">
+    <h1>Pause Scrolling on Hover</h1>
+    <p>Hover over this section to pause scrolling.</p>
+  </section>
 
-    <script>
-      // Initialize Lenis for smooth scrolling
-      const lenis = new Lenis({
-        duration: 1.5,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      });
+  <!-- Section 3: Stop Scrolling on Image Click -->
+  <section class="uk-parallax">
+    <img src="https://via.placeholder.com/1920x1080" class="ukiyo" alt="Ukiyo Parallax Image" />
+    <h1>Stop Scrolling on Image Click</h1>
+    <p>Click the parallax image to stop scrolling.</p>
+  </section>
 
-      function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-      }
+  <!-- Lenis.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.6/bundled/lenis.min.js"></script>
+  <!-- AOS.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <!-- Ukiyo.js -->
+  <script src="https://cdn.jsdelivr.net/npm/ukiyojs@4.1.2/dist/ukiyo.min.js"></script>
+
+  <script>
+    // Initialize Lenis for smooth scrolling
+    const lenis = new Lenis({
+      duration: 1.5,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    });
+
+    function raf(time) {
+      lenis.raf(time);
       requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
 
-      // Section 1: Toggle scrolling with a button
-      const toggleButton = document.getElementById("toggle-scroll");
-      let isScrolling = true;
+    // Section 1: Toggle scrolling with a button
+    const toggleButton = document.getElementById("toggle-scroll");
+    let isScrolling = true;
 
-      toggleButton.addEventListener("click", () => {
-        if (isScrolling) {
-          lenis.stop();
-          toggleButton.textContent = "Start Scrolling";
-        } else {
-          lenis.start();
-          toggleButton.textContent = "Stop Scrolling";
-        }
-        isScrolling = !isScrolling;
+    toggleButton.addEventListener("click", () => {
+      if (isScrolling) {
+        lenis.stop();
+        toggleButton.textContent = "Start Scrolling";
+      } else {
+        lenis.start();
+        toggleButton.textContent = "Stop Scrolling";
+      }
+      isScrolling = !isScrolling;
+    });
+
+    // Section 2: Pause scrolling on hover
+    const hoverSection = document.querySelector(".hover-pause");
+
+    hoverSection.addEventListener("mouseenter", () => lenis.stop());
+    hoverSection.addEventListener("mouseleave", () => lenis.start());
+
+    // Section 3: Stop scrolling on Ukiyo.js image click
+    const parallaxImages = document.querySelectorAll(".ukiyo");
+    const ukiyo = new Ukiyo(parallaxImages, { scale: 1.2 });
+
+    parallaxImages.forEach((img) => {
+      img.addEventListener("click", () => {
+        lenis.stop();
+        alert("Scrolling has been stopped. Refresh or use controls to re-enable scrolling.");
       });
+    });
 
-      // Section 2: Pause scrolling on hover
-      const hoverSection = document.querySelector(".hover-pause");
+    // Initialize AOS.js
+    AOS.init({
+      duration: 1200,
+      easing: "ease-in-out",
+    });
+  </script>
+</body>
 
-      hoverSection.addEventListener("mouseenter", () => lenis.stop());
-      hoverSection.addEventListener("mouseleave", () => lenis.start());
-
-      // Section 3: Stop scrolling on Ukiyo.js image click
-      const parallaxImages = document.querySelectorAll(".ukiyo");
-      const ukiyo = new Ukiyo(parallaxImages, { scale: 1.2 });
-
-      parallaxImages.forEach((img) => {
-        img.addEventListener("click", () => {
-          lenis.stop();
-          alert("Scrolling has been stopped. Refresh or use controls to re-enable scrolling.");
-        });
-      });
-
-      // Initialize AOS.js
-      AOS.init({
-        duration: 1200,
-        easing: "ease-in-out",
-      });
-    </script>
-  </body>
 </html>

@@ -1,170 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Advanced Ukiyo.js Parallax Effects</title>
-    <link rel="stylesheet" href="css/example-2.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="assets/favicon-32x32.png"
-            ><img src="assets/favicon-32x32.png" alt="icon"
-          /></a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="example-3.html">example-3</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle active"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  More
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li>
-                    <a class="dropdown-item" href="aos-with-lenis.html">aos-with-lenis</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="ukiyo+aos+lenis.html">ukiyu-with-lenis</a>
-                  </li>
 
-                  <li>
-                    <a class="dropdown-item" href="ukiyo+aos+lenis.html">ukiyu+aos+lenis</a>
-                  </li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li>
-                    <a class="dropdown-item" href="parallax-multiple-images.html"
-                      >parallax multiple images</a
-                    >
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="image-parallax.html">image parallax</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="overlapping-parallax.html"
-                      >overlapping-parallax</a
-                    >
-                  </li>
-                  <li><hr class="dropdown-divider" /></li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="sticky-header.html" tabindex="-1"
-                  >sticky-header</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="start-stop.html" tabindex="-1">start-stop</a>
-              </li>
-            </ul>
-            <form class="d-flex">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advanced Ukiyo.js Parallax Example</title>
+  <link rel="stylesheet" href="css/example-3.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="assets/favicon-32x32.png"><img src="assets/favicon-32x32.png" alt="icon" /></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Image Parallax</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="zoom-and-horizontal-parllax.html">Zoom/Horizontal
+                Effect with Parllax</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                More
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a class="dropdown-item" href="aos-with-lenis.html">Animations with Smooth Scroll</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="ukiyo-with-lenis.html">Parallax with Smooth Scroll</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="ukiyo+aos+lenis.html">Parallax and Animations with Smooth Scroll</a>
+                </li>
+
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <a class="dropdown-item" href="parallax-multiple-images.html">Parallax Multiple Images</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="image-parallax.html">Image Parallax</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="overlapping-parallax.html">Overlapping Parallax</a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="sticky-header.html" tabindex="-1">Sticky Header</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="start-stop.html" tabindex="-1">Start Stop Scroll</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
         </div>
-      </nav>
-    </header>
-    <!-- Parallax Section 1 -->
-    <div class="parallax-container">
-      <img
-        src="assets/image-hero-desktop.webp"
-        class="ukiyo"
-        alt="Parallax Image 1"
-        loading="lazy"
-        data-speed="1.5"
-      />
-      <div class="content">
-        <h1>Welcome to Ukiyo.js</h1>
       </div>
+    </nav>
+  </header>
+
+  <!-- Section 1 -->
+  <div class="parallax-container">
+    <img src="assets/image-hero-desktop.webp" class="ukiyo layer1" alt="Parallax Image 1" loading="lazy" />
+    <div class="content">
+      <h1>Welcome to Advanced Ukiyo.js</h1>
     </div>
+  </div>
 
-    <!-- Static Content -->
-    <section>
-      <h2>Static Content Section</h2>
-      <p>This section demonstrates non-parallax content.</p>
-    </section>
+  <!-- Section 2 -->
+  <section>
+    <h2>Regular Section with Content</h2>
+    <p>This section contains regular content.</p>
+  </section>
 
-    <!-- Parallax Section 2 -->
-    <div class="parallax-container">
-      <img
-        src="assets/image-hero-desktop.webp"
-        class="ukiyo"
-        alt="Parallax Image 2"
-        loading="lazy"
-        data-speed="1.5"
-        data-scale="1.8"
-      />
-      <div class="content">
-        <h1>Zoom Effect with Parallax</h1>
-      </div>
+  <!-- Section 3 -->
+  <div class="parallax-container">
+    <img src="assets/image-hero-desktop.webp" class="ukiyo layer2" alt="Parallax Image 2" loading="lazy" />
+    <div class="content">
+      <h1>Parallax Section 2</h1>
     </div>
+  </div>
 
-    <!-- More Static Content -->
-    <section>
-      <h2>Another Static Section</h2>
-      <p>Scroll down to see more advanced effects.</p>
-    </section>
+  <!-- Section 4 -->
+  <section>
+    <h2>Another Regular Section</h2>
+    <p>This is another section with more information.</p>
+  </section>
 
-    <!-- Parallax Section 3 -->
-    <div class="parallax-container">
-      <img
-        src="assets/image-hero-desktop.webp"
-        class="ukiyo"
-        alt="Parallax Image 3"
-        loading="lazy"
-        data-speed="2"
-      />
-      <div class="content">
-        <h1>Horizontal Parallax Effect</h1>
-      </div>
+  <!-- Section 5 -->
+  <div class="parallax-container">
+    <img src="assets/image-hero-desktop.webp" class="ukiyo layer3" alt="Parallax Image 3" loading="lazy" />
+    <div class="content">
+      <h1>Parallax Section 3</h1>
     </div>
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/ukiyojs@4.1.2/dist/ukiyo.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-      // Initialize Ukiyo.js with advanced effects
-      const images = document.querySelectorAll(".ukiyo");
-      images.forEach((image) => {
-        new Ukiyo(image, {
-          scale: image.dataset.scale || 1.5,
-          speed: parseFloat(image.dataset.speed) || 2,
-          direction: image.dataset.direction || "vertical",
-          willChange: true,
-        });
+  <script src="https://cdn.jsdelivr.net/npm/ukiyojs@4.1.2/dist/ukiyo.min.js"></script>
+  <script>
+    // Initialize Ukiyo.js for all layers
+    const layers = document.querySelectorAll(".ukiyo");
+
+    layers.forEach((layer, index) => {
+      new Ukiyo(layer, {
+        scale: 1.5 + index * 0.5, // Different zoom effect for each layer
+        speed: 2 - index * 0.5, // Different speed for each layer
+        willChange: true,
       });
-    </script>
-  </body>
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
 </html>

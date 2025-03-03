@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advanced Ukiyo.js Parallax Effects</title>
+  <link rel="stylesheet" href="css/example-2.css" />
+</head>
+
+<body>
+
+  <!-- Parallax Section 1 -->
+  <div class="parallax-container">
+    <img src="assets/image-hero-desktop.webp" class="ukiyo" alt="Parallax Image 1" loading="lazy" data-speed="1.5" />
+    <div class="content">
+      <h1>Welcome to Ukiyo.js</h1>
+    </div>
+  </div>
+
+  <!-- Static Content -->
+  <section>
+    <h2>Static Content Section</h2>
+    <p>This section demonstrates non-parallax content.</p>
+  </section>
+
+  <!-- Parallax Section 2 -->
+  <div class="parallax-container">
+    <img src="assets/image-hero-desktop.webp" class="ukiyo" alt="Parallax Image 2" loading="lazy" data-speed="1.5"
+      data-scale="1.8" />
+    <div class="content">
+      <h1>Zoom Effect with Parallax</h1>
+    </div>
+  </div>
+
+  <!-- More Static Content -->
+  <section>
+    <h2>Another Static Section</h2>
+    <p>Scroll down to see more advanced effects.</p>
+  </section>
+
+  <!-- Parallax Section 3 -->
+  <div class="parallax-container">
+    <img src="assets/image-hero-desktop.webp" class="ukiyo" alt="Parallax Image 3" loading="lazy" data-speed="2" />
+    <div class="content">
+      <h1>Horizontal Parallax Effect</h1>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/ukiyojs@4.1.2/dist/ukiyo.min.js"></script>
+  <script>
+    // Initialize Ukiyo.js with advanced effects
+    const images = document.querySelectorAll(".ukiyo");
+    images.forEach((image) => {
+      new Ukiyo(image, {
+        scale: image.dataset.scale || 1.5,
+        speed: parseFloat(image.dataset.speed) || 2,
+        direction: image.dataset.direction || "vertical",
+        willChange: true,
+      });
+    });
+  </script>
+</body>
+
+</html>
